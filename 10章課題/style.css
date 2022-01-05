@@ -27,7 +27,6 @@ main {
   background-color: #eee;
 }
 
-
 .main-visual-content:last-child {
   margin-right: 0;
 }
@@ -74,23 +73,19 @@ main {
   background-color: #aaa;
 }
 
-
-
 @media screen and (max-width: 768px) {
   main {
     display: block;
     width: 90%;
-    
+
     /* text-align: center;  
     align-items: center;
     justify-content: center;  */
-  } 
+  }
 
   .main-visual-content {
-    margin: 0 auto; 
+    margin: 0 auto;
     margin-top: 20px;
     margin-bottom: 20px;
   }
-  
- 
 }
