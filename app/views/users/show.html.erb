@@ -1,30 +1,62 @@
-<h1>Books</h1>
-<table>
- <thead>
-  <tr>
-   <% @books.each do |book| %>
-    <th>Title</th>
-    <th>Opinion</th>
-    <th colspan="3"></th>
-   </tr>
- </thead>
- <tbody>
-  <tr>
-   <td><%= book.title %></td>
-   <td><%= book.body %></td>
-   
-   <td><%= link_to 'edit', edit_book_path(book.id) %></td>
-   <td><%= link_to 'destroy', destroy_book_path(book.id),method: :delete %></td>
-  </tr>
- </tbody>
-</table>
+<p id="notice"><%= notice %></p>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-4">
+      <h2>User info</h2>
+        <div>
+          <%= attachment_image_tag @profile_images, :profile_image, :fill, 100, 100, format: 'jpeg' fallback: "no_image.jpg" %>
+          <p>name：<%= @user.name %></p>
+          <p>introduction：<%= @user.introduction %></p>
+          <button type="button" class="btn btn-outline-secondary btn-block">
+            <div class="fas fa-user-cog">
+              <%= link_to 'Edit', edit_user_path(@user) %>
+            </div>
+          </button>
+        </div>
+    </div>
+    <div class="col-lg-8">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+         <th>Title</th>
+         <th>Body</th>
+         <th colspan="3"></th>
+        </tr>
+      </thead>
+
+    <tbody>
+      <% @book.each do |book| %>
+        <tr>
+          <td><%= book.title %></td>
+          <td><%= book.body %></td>
+          <td><%= link_to 'Edit', edit_book_path(book) %></td>
+          <td><%= link_to 'Destroy', book_path, method: :delete, data: { confirm: '本当に消しますか?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  </div>
+ </div>
+</div>
+
+<br>
+
+
+
+<% if @new_book.errors.any? %>
+  <%= @new_book.errors.count %>件のerrorが発生しました
+  <% @new_book.errors.full_messages.each do |message| %>
+    <%= message %>
+  <% end %>
 <% end %>
 
-h1>New Book</h1>
-<%=form_with model:@book, local:true do |f|%>
+<h1>New book</h1>
+<%= form_with model: @new_book, local:true do |f| %>
   <h4>Title</h4>
-  <%=f.text_field :title%>
+  <%= f.text_field :title %>
   <h4>Opinion</h4>
-  <%=f.text_area :body %>
-  <%=f.submit'Create Book'%>
+  <%= f.text_area :body %>
+  <%= f.submit 'Create Book' %>
 <% end %>
