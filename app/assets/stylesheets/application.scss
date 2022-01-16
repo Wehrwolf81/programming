@@ -118,3 +118,11 @@ li {
     display: list-item;
     text-align: -webkit-match-parent;
 }
+
+.container, .container-fluid, .container-xl, .container-lg, .container-md, .container-sm {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
