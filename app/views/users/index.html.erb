@@ -1,12 +1,13 @@
 <p id="notice"><%= notice %></p>
 
 
+
 <div class="container">
   <div class="row">
     <div class="col-lg-4">
       <h2>User info</h2>
         <div>
-           <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg' %>
+          <%= attachment_image_tag @user, :profile_image, :fill, 63, 63, format: 'jpeg', fallback: "no_image.jpg" %>
           <p>name：<%= @user.name %></p>
           <p>introduction：<%= @user.introduction %></p>
           <button type="button" class="btn btn-outline-secondary btn-block">
@@ -30,7 +31,7 @@
     <tbody>
       <% @users.each do |user| %>
         <tr>
-          <td><%= attachment_image_tag user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %></td>
+          <td><%= attachment_image_tag user, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg" %></td>
           <td><%= user.name %></td>
             <td><%= link_to 'Show', user_path(@user.id) %></td>
         </tr>
@@ -42,12 +43,7 @@
 </div>
 
 
-<% if @new_book.errors.any? %>
-  <%= @new_book.errors.count %>件のerrorが発生しました
-  <% @new_book.errors.full_messages.each do |message| %>
-    <%= message %>
-  <% end %>
-<% end %>
+
 
 <h1>New book</h1>
 <%= form_with model: @new_book, local:true do |f| %>

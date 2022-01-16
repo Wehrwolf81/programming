@@ -33,7 +33,7 @@ class BooksController < ApplicationController
      if @new_book.save
      redirect_to book_path(@new_book.id),notice:'Book was successfully created.'
      else
-      flash.now[:alert]='message error'
+      # flash.now[:alert]='message error'
 
       @books=Book.all
       render :index
