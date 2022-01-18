@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     # @user=User.all
     @user = current_user
     @users = User.all
-    
+
   end
 
 
@@ -37,7 +37,7 @@ class UsersController < ApplicationController
     redirect_to user_path(@user.id),notice:'You have updeted user successfully.'
     else
       # flash.now[:alert]='update error'
-      render :edit_user
+      render :edit
     end
   end
 
